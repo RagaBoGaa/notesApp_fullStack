@@ -29,7 +29,6 @@ const Login = () => {
   const onSubmit = async (data: LoginFormValues) => {
     try {
       const result = await login(data).unwrap();
-      console.log('result', result);
       dispatch(setCredentials(result));
       toast.success('Login successful!');
       navigate('/');

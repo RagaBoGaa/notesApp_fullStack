@@ -101,7 +101,7 @@ const NoteForm = () => {
       }
     } catch (error: any) {
       console.error('Error saving note:', error.message);
-      toast.error('Error created or updating note!');
+      toast.error('Error saving note!');
     }
   };
 

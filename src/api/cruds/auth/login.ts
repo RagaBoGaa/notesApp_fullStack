@@ -1,24 +1,3 @@
-// export type LoginFormResponse = {
-//   status: boolean;
-//   data: {
-//     id: number;
-//     name: string;
-//     type: string;
-//     email: string;
-//     phone: string;
-//     image: string;
-//     birth_date: null;
-//     address: null;
-//     address_location: null;
-//     about: null;
-//     total_order: number;
-//     device_token: null;
-//     created_at: string;
-//   };
-//   message: string;
-//   access_token: string;
-// };
-
 export interface UserData {
   id: number;
   name: string;
@@ -40,11 +19,11 @@ export interface LoginResponse {
   data: {
     _id: string;
     name: string;
-    type: string;
     email: string;
+    token: string;
+    type?: string;
     phone?: string;
     image?: string;
-    token: string;
   };
 }
 

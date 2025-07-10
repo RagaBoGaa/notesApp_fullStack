@@ -15,9 +15,6 @@ export default function RootLayout({
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  console.log('isAuthenticated', isAuthenticated);
-  console.log('user', user);
-
   const handleLogout = () => {
     dispatch(logout());
     toast.success('Logged out successfully');

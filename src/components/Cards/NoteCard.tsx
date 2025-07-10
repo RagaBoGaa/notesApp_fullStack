@@ -17,7 +17,7 @@ const NoteCard: React.FC<NoteCardProps> = ({
   isUserNote = false,
 }) => {
   const navigate = useNavigate();
-  const { isAuthenticated } = useTypedSelector((state) => state.auth);
+  const { isAuthenticated, user } = useTypedSelector((state) => state.auth);
 
   return (
     <div
@@ -57,14 +57,14 @@ const NoteCard: React.FC<NoteCardProps> = ({
             <div className='relative flex items-center justify-center w-4 h-4 mr-1.5 bg-gradient-to-r from-indigo-400 to-purple-500 rounded-full'>
               <User className='h-2.5 w-2.5 text-white' />
             </div>
-            <span className='font-semibold text-indigo-700'>by</span>
+            <span className='font-semibold text-indigo-700 capitalize'>by</span>
             <span className='ml-1 truncate font-bold text-indigo-800'>
-              {note.user.name}
+              {note?.user?.name}
             </span>
           </div>
         </div>
 
-        {isAuthenticated && (
+        {isAuthenticated && note?.user?._id === user?.id && (
           <div className='flex justify-end gap-2 mt-auto'>
             <button
               onClick={(e) => {
