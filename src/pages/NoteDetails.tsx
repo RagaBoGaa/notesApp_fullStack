@@ -36,7 +36,6 @@ const NoteDetails = () => {
     entityName: 'Note',
   });
 
-  // Wrap the delete handler to check authentication
   const handleDeleteClick = (note: Note) => {
     if (!isAuthenticated) {
       toast.error('Please login to delete notes');
@@ -46,7 +45,6 @@ const NoteDetails = () => {
     originalHandleDeleteClick(note);
   };
 
-  // Handle edit button click with authentication check
   const handleEditClick = (noteId: string) => {
     if (!isAuthenticated) {
       toast.error('Please login to edit notes');
@@ -178,7 +176,7 @@ const NoteDetails = () => {
               )}
             </div>
 
-            <div className='flex flex-wrap gap-6 mb-8 p-4 bg-gray-50 rounded-xl border border-gray-200'>
+            <div className='flex flex-wrap gap-6 mb-4 p-4 bg-gray-50 rounded-xl border border-gray-200'>
               <div className='flex items-center text-gray-700'>
                 <Calendar className='h-5 w-5 mr-3 text-green-500' />
                 <div>
@@ -199,7 +197,7 @@ const NoteDetails = () => {
                 </div>
               )}
 
-              <div className='flex items-center bg-gradient-to-r from-indigo-50 to-purple-50 px-4 py-2 rounded-full border border-indigo-100 hover:from-indigo-100 hover:to-purple-100 transition-all duration-300 shadow-sm hover:shadow-md'>
+              <div className='flex items-center bg-gradient-to-r w-fit from-indigo-50 to-purple-50 px-4 py-1 rounded-full border border-indigo-100 hover:from-indigo-100 hover:to-purple-100 transition-all duration-300 shadow-sm hover:shadow-md'>
                 <div className='relative flex items-center justify-center w-8 h-8 mr-3 bg-gradient-to-br from-indigo-400 via-purple-500 to-indigo-600 rounded-full shadow-lg'>
                   <User className='h-4 w-4 text-white drop-shadow-sm' />
                   <div className='absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-full'></div>
@@ -227,8 +225,8 @@ const NoteDetails = () => {
             </div>
           </div>
 
-          <div className='bg-gradient-to-r from-gray-50 to-gray-100 px-8 py-6 border-t border-gray-200'>
-            <div className='flex justify-between items-center'>
+          <div className='bg-gradient-to-r from-gray-50 to-gray-100 px-4 py-6 border-t border-gray-200'>
+            <div className='flex justify-between items-center flex-wrap gap-2'>
               <p className='text-sm text-gray-500'>
                 Note ID: <span className='font-mono'>{note._id}</span>
               </p>
