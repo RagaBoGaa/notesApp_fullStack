@@ -44,7 +44,7 @@ const Profile = () => {
     dispatch(AuthAPI.util.resetApiState());
     dispatch(NoteAPI.util.resetApiState());
     toast.success('Logged out successfully');
-    navigate('/login');
+    navigate('/');
   };
 
   if (profileLoading || notesLoading) return <LoadingIndicator />;

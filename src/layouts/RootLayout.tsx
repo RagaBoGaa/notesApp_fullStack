@@ -22,7 +22,7 @@ export default function RootLayout({
     dispatch(AuthAPI.util.resetApiState());
     dispatch(NoteAPI.util.resetApiState());
     toast.success('Logged out successfully');
-    navigate('/login');
+    navigate('/');
   };
 
   return (
