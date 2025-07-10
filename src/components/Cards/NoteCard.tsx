@@ -38,7 +38,7 @@ const NoteCard: React.FC<NoteCardProps> = ({
           {note.content}
         </p>
 
-        <div className='space-y-1 mb-3 flex items-center justify-between gap-2'>
+        <div className='space-y-1 mb-3 flex items-center justify-between gap-2 flex-wrap'>
           <div className='flex items-center text-xs text-gray-500'>
             <Calendar className='h-3 w-3 mr-1.5 text-green-500' />
             <span className='font-medium'>Created:</span>

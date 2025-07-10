@@ -67,6 +67,22 @@
   }
 }
 
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out forwards;
+  opacity: 0;
+}
+
 @keyframes blob {
   0% {
     transform: translate(0px, 0px) scale(1);
@@ -94,6 +110,8 @@
   animation-delay: 4s;
 }
 
-.hover\\:scale-102:hover {
-  transform: scale(1.02);
+@media (max-width: 640px) {
+  .break-all {
+    word-break: break-all;
+  }
 }
