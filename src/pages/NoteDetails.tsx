@@ -17,7 +17,7 @@ import { Note } from '@/types/notes';
 const NoteDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { isAuthenticated } = useTypedSelector((state) => state.auth);
+  const { isAuthenticated, user } = useTypedSelector((state) => state.auth);
 
   const { data, isLoading, isError, error, refetch } = useGetNoteByIdQuery(
     { id: `${id}` },
@@ -152,7 +152,7 @@ const NoteDetails = () => {
                 {note.title || 'Untitled Note'}
               </h1>
 
-              {isAuthenticated && (
+              {isAuthenticated && note?.user?._id === user?.id && (
                 <div className='flex gap-3'>
                   <button
                     onClick={(e) => {
