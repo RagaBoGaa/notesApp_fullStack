@@ -15,7 +15,7 @@ const getToken = () => {
 };
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: 'https://notes-backend-rouge.vercel.app/api',
+  baseUrl: 'https://notesdb-backend.vercel.app/api',
   prepareHeaders: (headers) => {
     const token = getToken();
     if (token) {
