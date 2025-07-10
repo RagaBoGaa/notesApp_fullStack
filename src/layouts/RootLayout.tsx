@@ -5,6 +5,8 @@ import { logout } from '@/state/auth';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router';
 import { LogOut, User, FileText } from 'lucide-react';
+import { AuthAPI } from '@/api/cruds/auth/auth';
+import { NoteAPI } from '@/api/cruds/notesAPI';
 
 export default function RootLayout({
   children,
@@ -17,8 +19,10 @@ export default function RootLayout({
 
   const handleLogout = () => {
     dispatch(logout());
+    dispatch(AuthAPI.util.resetApiState());
+    dispatch(NoteAPI.util.resetApiState());
     toast.success('Logged out successfully');
-    navigate('/');
+    navigate('/login');
   };
 
   return (

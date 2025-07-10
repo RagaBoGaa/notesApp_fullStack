@@ -14,7 +14,6 @@ export interface AuthState {
   token: string | null;
 }
 
-// Initialize state from cookies or localStorage
 const getInitialState = (): AuthState => {
   const token = Cookies.get('token') || null;
   const userStr = localStorage.getItem('user');
@@ -52,7 +51,6 @@ export const authSlice = createSlice({
       state.token = data?.token;
       state.isAuthenticated = true;
 
-      // Store in cookies and localStorage
       Cookies.set('token', data?.token);
       localStorage.setItem(
         'user',
@@ -69,7 +67,6 @@ export const authSlice = createSlice({
       state.token = null;
       state.isAuthenticated = false;
 
-      // Clear cookies and localStorage
       Cookies.remove('token');
       localStorage.removeItem('user');
     },

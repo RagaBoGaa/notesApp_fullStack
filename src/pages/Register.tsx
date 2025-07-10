@@ -4,13 +4,10 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Link, useNavigate } from 'react-router';
 import { useRegisterMutation } from '@/api/cruds/auth/auth';
 import { registerSchema, RegisterFormValues } from '@/lib/schemas';
-import { useDispatch } from 'react-redux';
-import { setCredentials } from '@/state/auth';
 import { toast } from 'react-hot-toast';
 
 const Register = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const [register, { isLoading }] = useRegisterMutation();
   const [showPassword, setShowPassword] = useState(false);
 
@@ -29,10 +26,9 @@ const Register = () => {
 
   const onSubmit = async (data: RegisterFormValues) => {
     try {
-      const result = await register(data).unwrap();
-      dispatch(setCredentials(result));
-      toast.success('Registration successful!');
-      navigate('/');
+      await register(data).unwrap();
+      navigate('/login');
+      toast.success('You can now login to your account');
     } catch (error: any) {
       toast.error(
         error?.data?.message || 'Registration failed. Please try again.'

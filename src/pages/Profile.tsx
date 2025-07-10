@@ -1,22 +1,27 @@
 import { Link, useNavigate } from 'react-router';
+import { useDispatch } from 'react-redux';
+import { toast } from 'react-hot-toast';
+import { Plus, LogOut, User, Sparkles, BookOpen, Calendar } from 'lucide-react';
+
 import { useGetProfileQuery } from '@/api/cruds/auth/auth';
 import {
   useGetNotesForUsersQuery,
   useDeleteNoteMutation,
+  NoteAPI,
 } from '@/api/cruds/notesAPI';
-import { useDispatch } from 'react-redux';
+import { AuthAPI } from '@/api/cruds/auth/auth';
 import { logout } from '@/state/auth';
-import { toast } from 'react-hot-toast';
+
 import NoteCard from '@/components/Cards/NoteCard';
 import LoadingIndicator from '@/components/LoadingIndicator';
 import DeleteConfirmation from '@/components/shared/DeleteConfirmation';
 import { useDeleteModal } from '@/hooks/useDeleteConfirmation';
-import { Plus, LogOut, User, Sparkles, BookOpen, Calendar } from 'lucide-react';
 import { getTimeAgo } from '@/utilities/formatDate';
 
 const Profile = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const { data: profileData, isLoading: profileLoading } =
     useGetProfileQuery(null);
   const { data: notesData, isLoading: notesLoading } =
@@ -36,6 +41,8 @@ const Profile = () => {
 
   const handleLogout = () => {
     dispatch(logout());
+    dispatch(AuthAPI.util.resetApiState());
+    dispatch(NoteAPI.util.resetApiState());
     toast.success('Logged out successfully');
     navigate('/login');
   };
